@@ -1,5 +1,4 @@
 
 public class Empty {
-  kghkj
+  abcd
 }
-hj
