@@ -1,4 +1,4 @@
 
 public class Empty {
-  abcd
+  asdfghjkl
 }
