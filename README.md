@@ -1,4 +1,6 @@
 # Assignment-2
-big changes/issues here
 
-*Remove the Empty.class
+*Remove the Empty.class, Empty.java
+
+Useful links
+https://codeshare.io/
