@@ -17,10 +17,12 @@ public class Menu {
 		System.out.println("3) Music");
 		System.out.println("4) Stationeries");
 		System.out.println("5) DVD");
-		System.out.println("6) Back");
+		System.out.println("6) Book");
+		System.out.println("7) Back");
 	}
 	
 	public void printCart() {
 		System.out.println("Cart:");
 	}
+	
 }
