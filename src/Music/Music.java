@@ -1,3 +1,5 @@
+package Music;
+
 public class Music {
 	 String title;    //to store the title of the book
 	 String status;  //to store the information whether the book is "purchased", "IN", or "OUT" 
