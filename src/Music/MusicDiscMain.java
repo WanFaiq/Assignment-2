@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;  //Needed for decimal formatting
 import java.util.Scanner;
 
-public class MusicDisc extends Store
+public class MusicDiscMain
 {
   
 	DecimalFormat df = new DecimalFormat("0.00");
