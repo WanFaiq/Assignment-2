@@ -4,6 +4,7 @@ import Software.*;
 import Books.*;
 import ComputerHardware.*;
 import Music.*;
+import Stationery.*;
 
 public class StoreFinal {
 	static Scanner input = new Scanner(System.in);
@@ -39,10 +40,20 @@ public class StoreFinal {
 	private static int mRockCount = 0;
 	private static int mLatestCount = 0;
 
+	// Stationery
+	private static Eraser sEraser[] = new Eraser[30];
+	private static Pen sPen[] = new Pen[30];
+	private static Pencil sPencil[] = new Pencil[30];
+	private static Stapler sStapler[] = new Stapler[30];
+	private static int sEraserCount = 0;
+	private static int sPenCount = 0;
+	private static int sPencilCount = 0;
+	private static int sStaplerCount = 0;
+
 	// BOOK
-	private static BookComic bComic[] = new BookComic[50];
-	private static BookSciFi bSciFi[] = new BookSciFi[50];
-	private static BookICT bICT[] = new BookICT[50];
+	private static BookComic bComic[] = new BookComic[30];
+	private static BookSciFi bSciFi[] = new BookSciFi[30];
+	private static BookICT bICT[] = new BookICT[30];
 	private static int bComicCount = 0;
 	private static int bSciFiCount = 0;
 	private static int bICTCount = 0;
@@ -65,8 +76,14 @@ public class StoreFinal {
 		rockMusic();
 		latestMusic();
 		classicMusic();
-		
-		//BOOK
+
+		// STATIONERY
+		Eraser();
+		Pen();
+		Pencil();
+		Stapler();
+
+		// BOOK
 		bookComic();
 		bookSciFi();
 		bookICT();
@@ -98,6 +115,9 @@ public class StoreFinal {
 					break;
 				case 3:
 					printMusic();
+					break;
+				case 4:
+					printStationery();
 					break;
 				case 6:
 					printBook();
@@ -214,26 +234,49 @@ public class StoreFinal {
 		mClassicCount = 4;
 	}
 
+	// =====================================================STATIONERY===============================================
+	private static void Eraser() {
+		sEraser[0] = new Eraser("Stabilo Eraser", "Eraser", 2.50);
+		sEraserCount = 1;
+	}
+
+	private static void Pen() {
+		sPen[0] = new Pen("Paper Mate", "pen", 3.00);
+		sPen[1] = new Pen("Fabel Castle", "Pen", 4.00);
+		sPenCount = 2;
+	}
+
+	private static void Pencil() {
+		sPencil[0] = new Pencil("Stabilo Pencil", "Pencil", 3.00);
+		sPencil[1] = new Pencil("Faber caster Pencil", "Pencil", 3.00);
+		sPencilCount = 2;
+	}
+
+	private static void Stapler() {
+		sStapler[0] = new Stapler("Paper Mate", "stapler", 5.00);
+		sStaplerCount = 1;
+	}
+
 	// =====================================================BOOKS===============================================
 	private static void bookComic() {
 		bComic[0] = new BookComic("The Amazing Spider-Man, vol.2 #1", 1999);
 		bComic[1] = new BookComic("Forbidden Scrollery, vol.1", 2017);
 		bComicCount = 2;
 	}
-	
-	private static void bookSciFi() {
-      bSciFi[0] = new BookSciFi("The Hitchhiker's Guide to the Galaxy", 1979);
-      bSciFiCount = 1;
-    }
 
-    //static method for initICT()
-    private static void bookICT() {
-      bICT[0] = new BookICT("Java, How to Program", 2017);
-      bICT[1] = new BookICT("Mastering Java Machine Learning", 2016);
-      bICT[2] = new BookICT("Python Crash Course", 2015);
-      bICT[3] = new BookICT("UNIX and Linux System Administration Handbook, 4th Edition", 2010);
-      bICTCount = 4;
-    }
+	private static void bookSciFi() {
+		bSciFi[0] = new BookSciFi("The Hitchhiker's Guide to the Galaxy", 1979);
+		bSciFiCount = 1;
+	}
+
+	// static method for initICT()
+	private static void bookICT() {
+		bICT[0] = new BookICT("Java, How to Program", 2017);
+		bICT[1] = new BookICT("Mastering Java Machine Learning", 2016);
+		bICT[2] = new BookICT("Python Crash Course", 2015);
+		bICT[3] = new BookICT("UNIX and Linux System Administration Handbook, 4th Edition", 2010);
+		bICTCount = 4;
+	}
 
 	// PRINTING SECTION
 	// HARDWARE PRINT
@@ -319,7 +362,36 @@ public class StoreFinal {
 
 		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
-	
+
+	private static void printStationery() {
+		System.out.println("\n========== Stationery ==========");
+		System.out.println("\nEraser:");
+
+		for (int i = 0; i < sEraserCount; i++) {
+			sEraser[i].print(i);
+		}
+
+		System.out.println("\nPen:");
+
+		for (int i = 0; i < sPenCount; i++) {
+			sPen[i].print(i);
+		}
+
+		System.out.println("\nPencil:");
+
+		for (int i = 0; i < sPencilCount; i++) {
+			sPencil[i].print(i);
+		}
+
+		System.out.println("\nStapler:");
+
+		for (int i = 0; i < sStaplerCount; i++) {
+			sStapler[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
+	}
+
 	// BOOK PRINT
 	private static void printBook() {
 		System.out.println("\n========== Book ==========");
