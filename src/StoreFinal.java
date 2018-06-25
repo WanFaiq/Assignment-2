@@ -90,6 +90,7 @@ public class StoreFinal {
 
 		int option = 0;
 		int printOption = 0;
+		int purchaseOption = 0;
 
 		Menu printMenu = new Menu();
 
@@ -130,6 +131,26 @@ public class StoreFinal {
 				System.out.println("\nPlease select the type of product");
 				printMenu.printProductType();
 				System.out.print("Selection: ");
+				purchaseOption = input.nextInt();
+				switch (purchaseOption) {
+				case 1:
+					purchaseHardware();
+					break;
+				case 2:
+					printSoftware();
+					break;
+				case 3:
+					printMusic();
+					break;
+				case 4:
+					printStationery();
+					break;
+				case 6:
+					printBook();
+					break;
+				default:
+					break;
+				}
 				break;
 			case 3:
 				printMenu.printCart();
@@ -415,5 +436,146 @@ public class StoreFinal {
 
 		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
+	
+	//PURCHASE SECTION
+	//PURCHASE HARDWARE
+	private static int[] searchProduct() {
+		int hardwareOption = 0;
+		int[] i = new int[3];
+		while (true) {
+			System.out.println("\n1) Input Device");
+			System.out.println("2) Output Device");
+			System.out.println("3) Processors");
+			System.out.println("4) Storages\n");
+			System.out.print("Please enter the type of the computer hardware you're looking for: ");
+
+//			try {
+//				hardwareOption = Integer.parseInt(input.nextLine());
+//			}
+//
+//			catch (NumberFormatException e) {
+//
+//			}
+			
+			hardwareOption = input.nextInt();
+			
+			switch (hardwareOption) {
+			case 1:
+				searchInputDevice();
+				break;
+
+			case 2:
+				i = new int[] { 2, searchOutputDevice() };
+				break;
+
+			case 3:
+				i = new int[] { 3, searchProcessors() };
+				break;
+			case 4:
+				i = new int[] { 4, searchStorage() };
+				break;
+
+			default:
+				System.out.println("Type of computer hardware not found. Returning to menu~\n.");
+				break;
+			}
+
+			if (i[1] != -1) {
+				return i;
+			}
+		}
+	}
+
+	private static int searchInputDevice() {
+		String hardwareName;
+
+		System.out.print("Enter the name of the input device: ");
+		hardwareName = input.next();
+
+		for (int i = 0; i < productInputCount; i++) {
+			if (productInput[i].gethardwareName().equals(hardwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu~\n.");
+		return -1;
+	}
+
+	
+	private static int searchOutputDevice() {
+		String hardwareName;
+
+		System.out.print("Enter the name of the output device: ");
+		hardwareName = input.nextLine();
+
+		for (int i = 0; i < productOutputCount; i++) {
+			if (productOutput[i].gethardwareName().equals(hardwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu~\n");
+		return -1;
+	}
+
+
+	private static int searchProcessors() {
+		String hardwareName;
+
+		System.out.print("Enter the name of the processor: ");
+		hardwareName = input.nextLine();
+
+		for (int i = 0; i < productProcCount; i++) {
+			if (productProc[i].gethardwareName().equals(hardwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu~\n.");
+		return -1;
+	}
+
+	private static int searchStorage() {
+		String hardwareName;
+
+		System.out.print("Enter the name of the storage: ");
+		hardwareName = input.nextLine();
+
+		for (int i = 0; i < productStorCount; i++) {
+			if (productStor[i].gethardwareName().equals(hardwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu~\n.");
+		return -1;
+	}
+
+	private static void purchaseHardware() {
+		int[] i = searchProduct();
+
+		switch (i[0]) {
+		case 1:
+			productInput[i[1]].purchaseHardware();
+			break;
+
+		case 2:
+			productOutput[i[1]].purchaseHardware();
+			break;
+
+		case 3:
+			productProc[i[1]].purchaseHardware();
+			break;
+
+		case 4:
+			productStor[i[1]].purchaseHardware();
+		}
+	}
+    
 
 }
