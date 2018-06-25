@@ -1,7 +1,11 @@
-package Music;
-public class MusicDiscMain
+import java.text.DecimalFormat;  //Needed for decimal formatting
+import java.util.Scanner;
+
+public class MusicDisc extends Store
 {
   
+	DecimalFormat df = new DecimalFormat("0.00");
+    static Scanner sc = new Scanner(System.in); 
     static Boolean exit = false; //static information to check whether it is true or false.
 
   private static RockMusic mRock[] = new RockMusic[50];
@@ -128,7 +132,7 @@ public class MusicDiscMain
                break;
                
              case 2:
-            	System.out.println("Available Latest Music, select one available only"); // music availability
+            	System.out.println("Available Classic Music, select one available only"); // music availability
       	    	System.out.println("Spice Girls");
       	    	System.out.println("Trading Yesterday");
       	    	System.out.println("Roxette");
@@ -138,7 +142,7 @@ public class MusicDiscMain
                break;
                
              case 3:
-            	System.out.println("Available Latest Music, select one available only"); // music availability
+            	System.out.println("Available Rock Music, select one available only"); // music availability
       	    	System.out.println("Bon Jovi");
       	    	System.out.println("Linkin Park");
       	    	System.out.println("Shinedown");

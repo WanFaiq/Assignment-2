@@ -1,4 +1,3 @@
-package Music;
 import java.text.DecimalFormat;  //Needed for decimal formatting
 
 public class RockMusic extends Music 
@@ -33,7 +32,7 @@ public class RockMusic extends Music
    //To print out all the information of the books
     public void print(int i) 
     {
-      System.out.println("Book " + (i + 1) + ": " + "\"" + title + "\", \"" + status + "\", \"RM" + df.format(price) + "\"");
+      System.out.println("Music Disc " + (i + 1) + ": " + "\"" + title + "\", \"" + status + "\", \"RM" + df.format(price) + "\"");
     }
     
 }

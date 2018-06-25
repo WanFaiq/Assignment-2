@@ -1,4 +1,3 @@
-package Music;
 public class Music {
 	 String title;    //to store the title of the book
 	 String status;  //to store the information whether the book is "purchased", "IN", or "OUT" 
@@ -6,7 +5,7 @@ public class Music {
 	   public Music() 
 	   {
 		   this.title = "Future Music";
-		   this.status = "Coming Soon";
+		   this.status = "IN";
 	   }
 
 	   public Music(String title)

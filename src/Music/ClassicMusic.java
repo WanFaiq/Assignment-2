@@ -1,4 +1,3 @@
-package Music;
 import java.text.DecimalFormat;  //Needed for decimal formatting
 
 public class ClassicMusic extends Music 
