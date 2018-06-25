@@ -39,6 +39,14 @@ public class StoreFinal {
 	private static int mRockCount = 0;
 	private static int mLatestCount = 0;
 
+	// BOOK
+	private static BookComic bComic[] = new BookComic[50];
+	private static BookSciFi bSciFi[] = new BookSciFi[50];
+	private static BookICT bICT[] = new BookICT[50];
+	private static int bComicCount = 0;
+	private static int bSciFiCount = 0;
+	private static int bICTCount = 0;
+
 	public static void main(String[] args) {
 
 		// SOFTWARE
@@ -52,33 +60,51 @@ public class StoreFinal {
 		initOutputDevice();
 		initProcessors();
 		initStorage();
-		
+
 		// MUSIC
 		rockMusic();
 		latestMusic();
 		classicMusic();
 
 		int option = 0;
+		int printOption = 0;
 
 		Menu printMenu = new Menu();
-		
+
 		printMenu.printMainMenu();
 
 		while (true) {
 
-			System.out.print("Selection: ");
+			System.out.print("Main menu selection (6 to bring back the main menu): ");
 			option = input.nextInt();
 
 			switch (option) {
 			case 1:
 				System.out.println("\nPlease select the type of product you want to look for");
 				printMenu.printProductType();
-				System.out.println("Selection: ");
+				System.out.print("Selection: ");
+				printOption = input.nextInt();
+				switch (printOption) {
+				case 1:
+					printHardware();
+					break;
+				case 2:
+					printSoftware();
+					break;
+				case 3:
+					printMusic();
+					break;
+				case 6:
+					printBook();
+					break;
+				default:
+					break;
+				}
 				break;
 			case 2:
 				System.out.println("\nPlease select the type of product");
 				printMenu.printProductType();
-				System.out.println("Selection: ");
+				System.out.print("Selection: ");
 				break;
 			case 3:
 				printMenu.printCart();
@@ -91,7 +117,8 @@ public class StoreFinal {
 				System.out.println("Exiting... Goodbye!");
 				return;
 			case 6:
-
+				printMenu.printMainMenu();
+				break;
 			default:
 				System.out.println("That is not a valid option");
 				break;
@@ -180,6 +207,136 @@ public class StoreFinal {
 		mClassic[2] = new ClassicMusic("Roxette", 30);
 		mClassic[3] = new ClassicMusic("The Bangles", 25);
 		mClassicCount = 4;
+	}
+
+	// =====================================================BOOKS===============================================
+	private static void bookComic() {
+		bComic[0] = new BookComic("The Amazing Spider-Man, vol.2 #1", 1999);
+		bComic[1] = new BookComic("Forbidden Scrollery, vol.1", 2017);
+		bComicCount = 2;
+	}
+	
+	private static void bookSciFi() {
+      bSciFi[0] = new BookSciFi("The Hitchhiker's Guide to the Galaxy", 1979);
+      bSciFiCount = 1;
+    }
+
+    //static method for initICT()
+    private static void bookICT() {
+      bICT[0] = new BookICT("Java, How to Program", 2017);
+      bICT[1] = new BookICT("Mastering Java Machine Learning", 2016);
+      bICT[2] = new BookICT("Python Crash Course", 2015);
+      bICT[3] = new BookICT("UNIX and Linux System Administration Handbook, 4th Edition", 2010);
+      bICTCount = 4;
+    }
+
+	// PRINTING SECTION
+	// HARDWARE PRINT
+	private static void printHardware() {
+		System.out.println("\n========== Hardware ==========");
+		System.out.println("\nInput Devices:");
+
+		for (int i = 0; i < productInputCount; i++) {
+			productInput[i].print(i);
+		}
+
+		System.out.println("\nOutput Devices:");
+
+		for (int i = 0; i < productOutputCount; i++) {
+			productOutput[i].print(i);
+		}
+
+		System.out.println("\nProcessors:");
+
+		for (int i = 0; i < productProcCount; i++) {
+			productProc[i].print(i);
+		}
+
+		System.out.println("\nStorages:");
+
+		for (int i = 0; i < productStorCount; i++) {
+			productStor[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
+	}
+
+	// SOFTWARE PRINT
+	private static void printSoftware() {
+		System.out.println("\n========== Software ==========");
+		System.out.println("\nGraphics:");
+
+		for (int i = 0; i < productGraphicsCount; i++) {
+			productGraphics[i].print(i);
+		}
+
+		System.out.println("\nGames:");
+
+		for (int i = 0; i < productGamesCount; i++) {
+			productGames[i].print(i);
+		}
+
+		System.out.println("\nMultimedia:");
+
+		for (int i = 0; i < productMultimediaCount; i++) {
+			productMultimedia[i].print(i);
+		}
+
+		System.out.println("\nText Editors:");
+
+		for (int i = 0; i < productTextEditorCount; i++) {
+			productTextEditor[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
+	}
+
+	// MUSIC PRINT
+	private static void printMusic() {
+		System.out.println("\n========== Music ==========");
+		System.out.println("\nRock Music:");
+
+		for (int i = 0; i < mRockCount; i++) {
+			mRock[i].print(i);
+		}
+
+		System.out.println("\nLatest Music:");
+
+		for (int i = 0; i < mLatestCount; i++) {
+			mLatest[i].print(i);
+		}
+
+		System.out.println("\nClassic Music:");
+
+		for (int i = 0; i < mClassicCount; i++) {
+			mClassic[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
+	}
+	
+	// BOOK PRINT
+	private static void printBook() {
+		System.out.println("\n========== Book ==========");
+		System.out.println("\nComic Books:");
+
+		for (int i = 0; i < bComicCount; i++) {
+			bComic[i].print(i);
+		}
+
+		System.out.println("\nSciFi Books:");
+
+		for (int i = 0; i < bSciFiCount; i++) {
+			bSciFi[i].print(i);
+		}
+
+		System.out.println("\nICT Books:");
+
+		for (int i = 0; i < bICTCount; i++) {
+			bICT[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
 
 }
