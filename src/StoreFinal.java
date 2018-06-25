@@ -65,6 +65,11 @@ public class StoreFinal {
 		rockMusic();
 		latestMusic();
 		classicMusic();
+		
+		//BOOK
+		bookComic();
+		bookSciFi();
+		bookICT();
 
 		int option = 0;
 		int printOption = 0;
