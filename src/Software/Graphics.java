@@ -2,7 +2,7 @@ package Software;
 
 public class Graphics extends Software {
 	
-	public Graphics(String softwareName, String softwareType, int amount, double softwarePrice) {
+	public Graphics(String softwareName, String softwareType, double softwarePrice) {
 		this.softwareName = softwareName;
 		this.softwareType = softwareType;
 		this.softwarePrice = softwarePrice;

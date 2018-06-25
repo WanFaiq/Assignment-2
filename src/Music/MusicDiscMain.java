@@ -1,9 +1,7 @@
 package Music;
-public class MusicDisc extends Store
+public class MusicDiscMain
 {
   
-	DecimalFormat df = new DecimalFormat("0.00");
-    static Scanner sc = new Scanner(System.in); 
     static Boolean exit = false; //static information to check whether it is true or false.
 
   private static RockMusic mRock[] = new RockMusic[50];

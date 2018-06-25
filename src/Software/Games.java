@@ -1,7 +1,7 @@
 package Software;
 
 public class Games extends Software{
-	public Games(String softwareName, String softwareType, int amount, double softwarePrice) {
+	public Games(String softwareName, String softwareType, double softwarePrice) {
 		this.softwareName = softwareName;
 		this.softwareType = softwareType;
 		this.softwarePrice = softwarePrice;
