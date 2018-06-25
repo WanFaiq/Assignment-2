@@ -1,3 +1,5 @@
+package Music;
+
 import java.text.DecimalFormat;  //Needed for decimal formatting
 import java.util.Scanner;
 
