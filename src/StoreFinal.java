@@ -157,7 +157,7 @@ public class StoreFinal {
 					purchaseHardware();
 					break;
 				case 2:
-					printSoftware();
+					purchaseSoftware();
 					break;
 				case 3:
 					printMusic();
@@ -204,14 +204,14 @@ public class StoreFinal {
 	}
 
 	private static void gamesSoftware() {
-		productGames[0] = new Games("DOOM", "Games", 150.00);
+		productGames[0] = new Games("Super Mario", "Games", 150.00);
 		productGames[1] = new Games("Fallout", "Games", 145.00);
 		productGames[2] = new Games("Skyrim", "Games", 70.00);
 		productGamesCount = 3;
 	}
 
 	private static void multimediaSoftware() {
-		productMultimedia[0] = new Multimedia("VLC", "Multimedia", 20.00);
+		productMultimedia[0] = new Multimedia("Video Lan", "Multimedia", 20.00);
 		productMultimedia[1] = new Multimedia("KMPlayer", "Multimedia", 7.00);
 		productMultimediaCount = 2;
 	}
@@ -306,21 +306,25 @@ public class StoreFinal {
 		actionFilm[0] = new Action("Avengers", "Joss Whedon", 2012, 143 );
 		actionFilm[1] = new Action("Avengers - Age of Ultron", "Joss Whedon", 2015, 142);
 		actionFilm[2] = new Action("Avengers - Infinity War part I ", "Anthony Russo & Joe Russo", 2018, 160);
+		actionFilmCount = 3;
 	}
 	private static void animationFilm() {
 		animationFilm[0] = new Animation("Kubo and the Two Strings","Travis Knight", 2016, 102);
 		animationFilm[1] = new Animation("Big Hero Six","Don Hall & Chris Williams",2014 , 108);
 		animationFilm[2] = new Animation("Coco","Lee Unkrich", 2017, 109);
+		animationFilmCount = 3;
 	}
 	private static void scifiFilm() {
 		scifiFilm[0] = new SciFi("Arrival", "Denis Villeneuve",2016 ,118 );
-		scifiFilm[1] = new SciFi("The Matrix", "Lilly Wachowski & Lana Wachowski\r\n", 1999 ,150 );
+		scifiFilm[1] = new SciFi("The Matrix", "Lilly Wachowski & Lana Wachowski", 1999 ,150 );
 		scifiFilm[2] = new SciFi("Ex MAchina", "Alex Garland",2015 ,110 );
+		scifiFilmCount = 3;
 	}
 	private static void thrillerFilm() {
 		thrillerFilm[0] = new Thriller("Inception", "Christopher Nolan", 2010, 148);
 		thrillerFilm[1] = new Thriller ("Gone Girl", "David Fincher", 2014, 149);
 		thrillerFilm[2] = new Thriller ("taken", "Pierre Morel",2009 ,93 );
+		thrillerFilmCount = 3;
 	}
 
 	// =====================================================BOOKS===============================================
@@ -649,6 +653,137 @@ public class StoreFinal {
 		}
 	}
 	
-	
+	// PURCHASE SOFTWARE
+	private static int[] searchSoftware() {
 
+		input = new Scanner(System.in);
+
+		int softwareOption = 0;
+		int[] i = new int[3];
+		while (true) {
+			System.out.println("\n1) Graphics software");
+			System.out.println("2) Games software");
+			System.out.println("3) Multimedia Software");
+			System.out.println("4) Text Editor Software\n");
+			System.out.print("Please enter the type of software you're looking for: ");
+
+			softwareOption = Integer.parseInt(input.nextLine());
+
+			switch (softwareOption) {
+			case 1:
+				i = new int[] { 1, searchGraphics() };
+				break;
+
+			case 2:
+				i = new int[] { 2, searchGames() };
+				break;
+
+			case 3:
+				i = new int[] { 3, searchMultimedia() };
+				break;
+			case 4:
+				i = new int[] { 4, searchTextEditor() };
+				break;
+
+			default:
+				System.out.println("Type of software not found. Returning to menu~\n.");
+				break;
+			}
+
+			if (i[1] != -1) {
+				return i;
+			}
+		}
+	}
+
+	private static int searchGraphics() {
+		String softwareName;
+
+		System.out.print("Enter the name of the graphics software: ");
+		softwareName = input.next();
+
+		for (int i = 0; i < productGraphicsCount; i++) {
+			if (productGraphics[i].getSoftwareName().equals(softwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu...\n.");
+		return -1;
+	}
+
+	private static int searchGames() {
+		String softwareName;
+
+		System.out.print("Enter the name of the game: ");
+		softwareName = input.nextLine();
+
+		for (int i = 0; i < productGamesCount; i++) {
+			if (productGames[i].getSoftwareName().equals(softwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu...\n");
+		return -1;
+	}
+
+	private static int searchMultimedia() {
+		String softwareName;
+
+		System.out.print("Enter the name of the multimedia software: ");
+		softwareName = input.nextLine();
+
+		for (int i = 0; i < productMultimediaCount; i++) {
+			if (productMultimedia[i].getSoftwareName().equals(softwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu...\n.");
+		return -1;
+	}
+
+	private static int searchTextEditor() {
+		String softwareName;
+
+		System.out.print("Enter the name of the text editor software: ");
+		softwareName = input.nextLine();
+
+		for (int i = 0; i < productTextEditorCount; i++) {
+			if (productTextEditor[i].getSoftwareName().equals(softwareName)) {
+				return i;
+			}
+
+		}
+
+		System.out.println("Product not found. Returning to menu...\n.");
+		return -1;
+	}
+
+	private static void purchaseSoftware() {
+		int[] i = searchSoftware();
+
+		switch (i[0]) {
+		case 1:
+			productGraphics[i[1]].purchaseSoftware();
+			break;
+
+		case 2:
+			productGames[i[1]].purchaseSoftware();
+			break;
+
+		case 3:
+			productMultimedia[i[1]].purchaseSoftware();
+			break;
+
+		case 4:
+			productTextEditor[i[1]].purchaseSoftware();
+			break;
+
+		}
+	}
 }
