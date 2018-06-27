@@ -5,6 +5,7 @@ import Books.*;
 import ComputerHardware.*;
 import Music.*;
 import Stationery.*;
+import DVD.*;
 
 public class StoreFinal {
 	static Scanner input = new Scanner(System.in);
@@ -50,6 +51,16 @@ public class StoreFinal {
 	private static int sPencilCount = 0;
 	private static int sStaplerCount = 0;
 
+	// DVD
+	private static Action actionFilm[] = new Action[30];
+	private static Animation animationFilm[] = new Animation[30];
+	private static SciFi scifiFilm[] = new SciFi[30];
+	private static Thriller thrillerFilm[] = new Thriller[30];
+	private static int actionFilmCount = 0;
+	private static int animationFilmCount = 0;
+	private static int scifiFilmCount = 0;
+	private static int thrillerFilmCount = 0;
+	
 	// BOOK
 	private static BookComic bComic[] = new BookComic[30];
 	private static BookSciFi bSciFi[] = new BookSciFi[30];
@@ -82,6 +93,12 @@ public class StoreFinal {
 		Pen();
 		Pencil();
 		Stapler();
+		
+		// DVD
+		actionFilm();
+		animationFilm();
+		scifiFilm();
+		thrillerFilm();
 
 		// BOOK
 		bookComic();
@@ -120,6 +137,9 @@ public class StoreFinal {
 				case 4:
 					printStationery();
 					break;
+				case 5:
+					printDVD();
+					break;
 				case 6:
 					printBook();
 					break;
@@ -144,6 +164,9 @@ public class StoreFinal {
 					break;
 				case 4:
 					printStationery();
+					break;
+				case 5:
+					printDVD();
 					break;
 				case 6:
 					printBook();
@@ -277,6 +300,28 @@ public class StoreFinal {
 		sStapler[0] = new Stapler("Paper Mate", "stapler", 5.00);
 		sStaplerCount = 1;
 	}
+	
+	// =====================================================STATIONERY===============================================
+	private static void actionFilm() {
+		actionFilm[0] = new Action("Avengers", "Joss Whedon", 2012, 143 );
+		actionFilm[1] = new Action("Avengers - Age of Ultron", "Joss Whedon", 2015, 142);
+		actionFilm[2] = new Action("Avengers - Infinity War part I ", "Anthony Russo & Joe Russo", 2018, 160);
+	}
+	private static void animationFilm() {
+		animationFilm[0] = new Animation("Kubo and the Two Strings","Travis Knight", 2016, 102);
+		animationFilm[1] = new Animation("Big Hero Six","Don Hall & Chris Williams",2014 , 108);
+		animationFilm[2] = new Animation("Coco","Lee Unkrich", 2017, 109);
+	}
+	private static void scifiFilm() {
+		scifiFilm[0] = new SciFi("Arrival", "Denis Villeneuve",2016 ,118 );
+		scifiFilm[1] = new SciFi("The Matrix", "Lilly Wachowski & Lana Wachowski\r\n", 1999 ,150 );
+		scifiFilm[2] = new SciFi("Ex MAchina", "Alex Garland",2015 ,110 );
+	}
+	private static void thrillerFilm() {
+		thrillerFilm[0] = new Thriller("Inception", "Christopher Nolan", 2010, 148);
+		thrillerFilm[1] = new Thriller ("Gone Girl", "David Fincher", 2014, 149);
+		thrillerFilm[2] = new Thriller ("taken", "Pierre Morel",2009 ,93 );
+	}
 
 	// =====================================================BOOKS===============================================
 	private static void bookComic() {
@@ -384,6 +429,7 @@ public class StoreFinal {
 		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
 
+	// STATIONERY PRINT
 	private static void printStationery() {
 		System.out.println("\n========== Stationery ==========");
 		System.out.println("\nEraser:");
@@ -412,6 +458,37 @@ public class StoreFinal {
 
 		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
+	
+	// DVD PRINT
+	
+	private static void printDVD() {
+		System.out.println("\n========== DVD ==========");
+		System.out.println("\nAction Film:");
+
+		for (int i = 0; i < actionFilmCount; i++) {
+			actionFilm[i].print(i);
+		}
+
+		System.out.println("\nAnimation Film:");
+
+		for (int i = 0; i < animationFilmCount; i++) {
+			animationFilm[i].print(i);
+		}
+
+		System.out.println("\nSciFi Film:");
+
+		for (int i = 0; i < scifiFilmCount; i++) {
+			scifiFilm[i].print(i);
+		}
+
+		System.out.println("\nThriller Film:");
+
+		for (int i = 0; i < thrillerFilmCount; i++) {
+			thrillerFilm[i].print(i);
+		}
+
+		System.out.println("\nPrint complete. Returning to the main menu...");
+	}
 
 	// BOOK PRINT
 	private static void printBook() {
@@ -436,10 +513,13 @@ public class StoreFinal {
 
 		System.out.println("\nPrint complete. Returning to the main menu...");
 	}
-	
-	//PURCHASE SECTION
-	//PURCHASE HARDWARE
-	private static int[] searchProduct() {
+
+	// PURCHASE SECTION
+	// PURCHASE HARDWARE
+	private static int[] searchHardware() {
+
+		input = new Scanner(System.in);
+
 		int hardwareOption = 0;
 		int[] i = new int[3];
 		while (true) {
@@ -449,19 +529,11 @@ public class StoreFinal {
 			System.out.println("4) Storages\n");
 			System.out.print("Please enter the type of the computer hardware you're looking for: ");
 
-//			try {
-//				hardwareOption = Integer.parseInt(input.nextLine());
-//			}
-//
-//			catch (NumberFormatException e) {
-//
-//			}
-			
-			hardwareOption = input.nextInt();
-			
+			hardwareOption = Integer.parseInt(input.nextLine());
+
 			switch (hardwareOption) {
 			case 1:
-				searchInputDevice();
+				i = new int[] { 1, searchInputDevice() };
 				break;
 
 			case 2:
@@ -503,7 +575,6 @@ public class StoreFinal {
 		return -1;
 	}
 
-	
 	private static int searchOutputDevice() {
 		String hardwareName;
 
@@ -520,7 +591,6 @@ public class StoreFinal {
 		System.out.println("Product not found. Returning to menu~\n");
 		return -1;
 	}
-
 
 	private static int searchProcessors() {
 		String hardwareName;
@@ -557,7 +627,7 @@ public class StoreFinal {
 	}
 
 	private static void purchaseHardware() {
-		int[] i = searchProduct();
+		int[] i = searchHardware();
 
 		switch (i[0]) {
 		case 1:
@@ -574,8 +644,11 @@ public class StoreFinal {
 
 		case 4:
 			productStor[i[1]].purchaseHardware();
+			break;
+
 		}
 	}
-    
+	
+	
 
 }
